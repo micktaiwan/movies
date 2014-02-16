@@ -7,7 +7,7 @@ angular.module('moviesApp')
         // first search for the movie in movies
         //$firebase(moviesRef).child(id);
 
-        $scope.movie = {Title: $routeParams.imdbId};
+        $scope.movie = getFromId($routeParams.imdbId);
 
 
     });
