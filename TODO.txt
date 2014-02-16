@@ -1,0 +1,14 @@
+TODO
+====
+
+
+Ajout
+=====
+
+http://www.omdbapi.com/
+L'ajout doit se faire par id de OMDB
+"imdbID":"tt1285016"
+
+Films vus et pas vus (griser)
+Films à voir (starred)
+

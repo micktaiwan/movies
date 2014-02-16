@@ -1,0 +1,60 @@
+
+Search by title:
+<input ng-model="title">
+<br/>
+
+<table style="width:100%">
+    <tr>
+        <td style="vertical-align:top;">
+
+            <table>
+                <tr style="font-weight:bold;">
+                    <td>Title</td>
+                    <td>Year</td>
+                    <td>Type</td>
+                </tr>
+
+                <tr ng-repeat="m in searchResults.Search | orderBy:'-Year'" ng-class="{active: movieId==m.imdbID}">
+                    <td><a ng-click="searchById(m.imdbID)">{{m.Title}}</a>
+                    </td>
+                    <td>{{m.Year}}</td>
+                    <td>{{m.Type}}</td>
+                </tr>
+            </table>
+        </td>
+        <td style="vertical-align:top;max-width:400px;" ng-show="movieDetail">
+            <!-- <img src="{{movieDetail.Poster}}" style="float:right"> -->
+            <div class="movie title">{{movieDetail.Title}}
+                <a target="_blank" href="http://www.imdb.com/title/{{movieDetail.imdbID}}">
+                    <button class="btn btn-warning">IMDB</button>
+                </a>
+                <button class="btn btn-primary" ng-click="addMovie(movieDetail.imdbID)">Add to my movies</button>
+            </div>
+            <div class="movie plot">{{movieDetail.Plot}}</div>
+            <div>
+                <br/>Director: <b>{{movieDetail.Director}}</b>
+                <br/>Actors: {{movieDetail.Actors}}
+                <br/>Rating: {{movieDetail.imdbRating}} (metascore: {{movieDetail.Metascore}})
+                <br/>Released: {{movieDetail.Released}}
+                <br/>Runtime: {{movieDetail.Runtime}}
+                <br/>Genre: {{movieDetail.Genre}}
+                <br/>Country: {{movieDetail.Country}}
+                <br/>Language: {{movieDetail.Language}}
+                <br/>Awards: {{movieDetail.Awards}}
+            </div>
+            <div class="movie json">{{movieDetail}}</div>
+        </td>
+    </tr>
+</table>
+
+<div class="row marketing">
+    <div ng-repeat="m in movies">
+        <h4>{{m.title}}</h4>
+        <p>added on {{m.date}} by {{m.user.name}}</p>
+        <div ng-repeat="o in m.opinions">
+            <div class="opinion user">{{o.user.name}}</div>
+            <div class="opinion stars">Stars: {{o.stars}}</div>
+            <div class="opinion opinion">{{o.opinion}}</div>
+        </div>
+    </div>
+</div>
